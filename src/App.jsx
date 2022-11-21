@@ -18,6 +18,8 @@ const App = () => {
        name: "username",
        type: "text",
        placeholder: "Username",
+       errorMessage:
+         "Username would be 3-16 characters and shouldn't include any special characters",
        label: "Username",
      },
      {
@@ -25,12 +27,13 @@ const App = () => {
        name: "email",
        type: "text",
        placeholder: "Email",
+       errorMessage: "It should be a valid Email address",
        label: "Email",
      },
      {
        id: 3,
        name: "birthday",
-       type: "text",
+       type: "date",
        placeholder: "Birthday",
        label: "Birthday",
      },
@@ -39,6 +42,7 @@ const App = () => {
        name: "password",
        type: "password",
        placeholder: "Password",
+       errorMessage: "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character",
        label: "Password",
      },
      {
@@ -46,6 +50,7 @@ const App = () => {
        name: "confirmPassword",
        type: "password",
        placeholder: "Confirm Password",
+       errorMessage: "Password didn't match",
        label: "Confirm Password",
      },
    ];
@@ -62,14 +67,15 @@ const App = () => {
     return (
       <div className="app">
         <form onSubmit={handleSubmit}>
-        {inputs.map((input) => (
-            <FormInput 
-                key={input.id}
-                {...input} 
-                value={values[input.name]}
-                onChange = {onChange}
+          <h1>Register</h1>
+          {inputs.map((input) => (
+            <FormInput
+              key={input.id}
+              {...input}
+              value={values[input.name]}
+              onChange={onChange}
             />
-        ))}
+          ))}
           <button>Submit</button>
         </form>
       </div>
